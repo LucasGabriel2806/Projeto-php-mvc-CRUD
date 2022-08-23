@@ -1,5 +1,11 @@
 <?php
 
+namespace App\Model;
+
+use App\DAO\ProdutoDAO;
+
+
+
 class ProdutoModel
 {
     public $id, $nome, $preco, $descricao;

@@ -1,5 +1,10 @@
 <?php
 
+namespace App\DAO;
+
+use App\Model\Categoria_produtoModel;
+use \PDO;
+
 class Categoria_produtoDAO
 {
     

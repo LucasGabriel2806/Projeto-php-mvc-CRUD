@@ -1,5 +1,8 @@
 <?php
 
+namespace App\Controller;
+
+use App\Model\Categoria_produtoModel;
 
 class Categoria_produtoController 
 {

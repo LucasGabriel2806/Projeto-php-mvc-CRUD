@@ -1,4 +1,11 @@
 <?php
+
+namespace App\DAO;
+
+use App\Model\FuncionarioModel;
+use \PDO;
+
+
 /**
  * As classes DAO (Data Access Object) são responsáveis por executar os
  * SQL junto ao banco de dados.

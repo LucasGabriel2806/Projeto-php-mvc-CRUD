@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Controller;
+
+use App\Model\ProdutoModel;
+
+
 class ProdutoController
 {
     public static function index() 
