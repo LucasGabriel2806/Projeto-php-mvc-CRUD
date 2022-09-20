@@ -7,17 +7,12 @@ use \PDO;
 
 
 
-class ProdutoDAO
+class ProdutoDAO extends DAO
 {
-    private $conexao;
 
     public function __construct() 
     {
-    $dsn = "mysql:host=localhost:3307;dbname=db_sistema";
-        $user = "root";
-        $pass = "etecjau";
-
-        $this->conexao = new PDO($dsn, $user, $pass);
+        parent::__construct();
     }
 
 
@@ -66,7 +61,6 @@ class ProdutoDAO
 
     public function selectById(int $id)
     {
-        include_once 'Model/ProdutoModel.php';
 
         $sql = "SELECT * FROM produto WHERE id = ?";
 

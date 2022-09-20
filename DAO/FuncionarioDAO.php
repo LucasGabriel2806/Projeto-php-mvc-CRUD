@@ -3,6 +3,7 @@
 namespace App\DAO;
 
 use App\Model\FuncionarioModel;
+use ParentIterator;
 use \PDO;
 
 
@@ -10,14 +11,9 @@ use \PDO;
  * As classes DAO (Data Access Object) são responsáveis por executar os
  * SQL junto ao banco de dados.
  */
-class FuncionarioDAO
+class FuncionarioDAO extends DAO
 {
-    /**
-     * Atributo (ou Propriedade) da classe destinado a armazenar o link (vínculo aberto)
-     * de conexão com o banco de dados.
-     */
-    private $conexao;
-
+    
 
     /**
      * Método construtor, sempre chamado na classe quando a classe é instanciada.
@@ -29,14 +25,8 @@ class FuncionarioDAO
      */
     public function __construct() 
     {
-        // DSN (Data Source Name) onde o servidor MySQL será encontrado
-        // (host) em qual porta o MySQL está operado e qual o nome do banco pretendido. 
-        $dsn = "mysql:host=localhost:3307;dbname=db_sistema";
-        $user = "root";
-        $pass = "etecjau";
-        
-        // Criando a conexão e armazenado na propriedade definida para tal.
-        $this->conexao = new PDO($dsn, $user, $pass);
+        parent::__construct();
+
     }
 
 
@@ -110,8 +100,6 @@ class FuncionarioDAO
      */
     public function selectById(int $id)
     {
-        include_once 'Model/FuncionarioModel.php';
-
         $sql = "SELECT * FROM funcionario WHERE id = ?";
 
         $stmt = $this->conexao->prepare($sql);

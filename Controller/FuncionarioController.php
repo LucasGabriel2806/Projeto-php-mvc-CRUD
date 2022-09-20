@@ -13,19 +13,18 @@ use App\Model\FuncionarioModel;
  * buscar algo no banco de dados), redirecionar o usuário de rota, ou mesmo,
  * chamar outra Controller.
  */
-class FuncionarioController 
+class FuncionarioController extends Controller
 {
     /**
      * Os métodos index serão usados para devolver uma View.
      */
     public static function index() 
     {
-        include 'Model/FuncionarioModel.php';
 
         $model = new FuncionarioModel();
         $model->getAllRows();
 
-        include 'View/modules/Funcionario/ListaFuncionario.php';
+        parent::render('Funcionario/ListaFuncionario', $model);
     }
 
    /**
@@ -34,7 +33,6 @@ class FuncionarioController
     public static function form()
     {
 
-        include 'Model/FuncionarioModel.php'; // inclusão do arquivo model.
         $model = new FuncionarioModel();
 
         if(isset($_GET['id'])) // Verificando se existe uma variável $_GET
@@ -43,7 +41,7 @@ class FuncionarioController
 			// Typecast: eu to pegando o que ta vindo da barra do navegador: $_GET['id'] e estou convertendo pra (int) 
             // Para saber mais sobre Typecast, leia: https://tiago.blog.br/type-cast-ou-conversao-de-tipos-do-php-isso-pode-te-ajudar-muito/
 
-        include 'View/modules/Funcionario/FormFuncionario.php'; // Include da View. Note que a variável $model está disponível na View.
+            parent::render('Funcionario/FormFuncionario', $model);
     }
 
     /**
@@ -51,11 +49,10 @@ class FuncionarioController
      */
     public static function save() {
 
-        include 'Model/FuncionarioModel.php'; // inclusão do arquivo model.
-
         // Abaixo cada propriedade do objeto sendo abastecida com os dados informados
         // pelo usuário no formulário (note o envio via POST)
         $model = new FuncionarioModel();
+
         $model->id =  $_POST['id'];
         $model->nome = $_POST['nome'];
         $model->rg = $_POST['rg'];
@@ -76,7 +73,6 @@ class FuncionarioController
      */
     public static function delete()
     {
-        include 'Model/FuncionarioModel.php'; // inclusão do arquivo model.
 
         $model = new FuncionarioModel();
 

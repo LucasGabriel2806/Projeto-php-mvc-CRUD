@@ -5,7 +5,7 @@ namespace App\Model;
 use App\DAO\FuncionarioDAO;
 
 
-class FuncionarioModel
+class FuncionarioModel extends Model
 {
     /**
      * Declaração das propriedades conforme campos da tabela no banco de dados.
@@ -14,16 +14,12 @@ class FuncionarioModel
     public $data_nascimento, $email;
     public $telefone, $endereco;
 
-    public $rows;
-
-
     /**
      * Declaração do método save que chamará a DAO para gravar no banco de dados
      * o model preenchido.
      */
     public function save()
     {
-        include 'DAO/FuncionarioDAO.php';
 
         $dao = new FuncionarioDAO();
 
@@ -50,7 +46,6 @@ class FuncionarioModel
 
     public function getAllRows()
     {
-        include 'DAO/FuncionarioDAO.php'; // Incluíndo o arquivo DAO
         
         // Instância do objeto e conexão no banco de dados via construtor
         $dao = new FuncionarioDAO();
@@ -68,7 +63,6 @@ class FuncionarioModel
      */
     public function getById(int $id)
     {
-        include 'DAO/FuncionarioDAO.php'; // Incluíndo o arquivo DAO
 
         $dao = new FuncionarioDAO();
 
@@ -92,7 +86,6 @@ class FuncionarioModel
      */
     public function delete(int $id)
     {
-        include 'DAO/FuncionarioDAO.php'; // Incluíndo o arquivo DAO
 
         $dao = new FuncionarioDAO();
 

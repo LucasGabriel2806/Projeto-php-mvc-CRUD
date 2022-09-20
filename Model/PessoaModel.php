@@ -5,16 +5,16 @@ namespace App\Model;
 use App\DAO\PessoaDAO;
 
 
-class PessoaModel
+class PessoaModel extends Model
 {
     /**
      * Declaração das propriedades conforme campos da tabela no banco de dados.
+     * Atributos(caracteristicas)
      */
     public $id, $nome, $rg, $cpf;
     public $data_nascimento, $email;
     public $telefone, $endereco;
 
-    public $rows;
 
 
     /**
@@ -23,7 +23,6 @@ class PessoaModel
      */
     public function save()
     {
-        include 'DAO/PessoaDAO.php';
 
         $dao = new PessoaDAO();
 
@@ -49,9 +48,7 @@ class PessoaModel
     }
 
     public function getAllRows()
-    {
-        include 'DAO/PessoaDAO.php'; // Incluíndo o arquivo DAO
-        
+    {        
         // Instância do objeto e conexão no banco de dados via construtor
         $dao = new PessoaDAO();
 
@@ -68,7 +65,6 @@ class PessoaModel
      */
     public function getById(int $id)
     {
-        include 'DAO/PessoaDAO.php'; // Incluíndo o arquivo DAO
 
         $dao = new PessoaDAO();
 
@@ -92,8 +88,6 @@ class PessoaModel
      */
     public function delete(int $id)
     {
-        include 'DAO/PessoaDAO.php'; // Incluíndo o arquivo DAO
-
         $dao = new PessoaDAO();
 
         $dao->delete($id);

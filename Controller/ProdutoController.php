@@ -5,25 +5,20 @@ namespace App\Controller;
 use App\Model\ProdutoModel;
 
 
-class ProdutoController
+class ProdutoController extends Controller
 {
     public static function index() 
     {
-
-        // Para saber mais sobre include , leia: https://www.php.net/manual/pt_BR/function.include.php
-		// index vai ser respondavel por devolver a listagem dos dados do meu usuario(devolve a view de listagem)
-        include 'Model/ProdutoModel.php'; // inclusão do arquivo model.
         
         $model = new ProdutoModel(); // Instância da Model
         $model->getAllRows(); // Obtendo todos os registros, abastecendo a propriedade $rows da model.
 
-        include 'View/modules/Produto/ProdutoListar.php';
+        parent::render('Produto/ProdutoListar', $model);
     }
 
     public static function form()
     {
 
-        include 'Model/ProdutoModel.php'; // inclusão do arquivo model.
         $model = new ProdutoModel();
 
         if(isset($_GET['id'])) // Verificando se existe uma variável $_GET
@@ -32,15 +27,14 @@ class ProdutoController
 			// Typecast: eu to pegando o que ta vindo da barra do navegador: $_GET['id'] e estou convertendo pra (int) 
             // Para saber mais sobre Typecast, leia: https://tiago.blog.br/type-cast-ou-conversao-de-tipos-do-php-isso-pode-te-ajudar-muito/
 
-        include 'View/modules/Produto/ProdutoCadastro.php';
+        parent::render('Produto/ProdutoCadastro', $model);
     }
 
     public static function save()
     {
-        include 'Model/ProdutoModel.php';
-
 
         $model = new ProdutoModel();
+
         $model->id =  $_POST['id'];
         $model->nome = $_POST['nome'];
         $model->preco = $_POST['preco'];
@@ -57,7 +51,6 @@ class ProdutoController
      */
     public static function delete()
     {
-        include 'Model/ProdutoModel.php'; // inclusão do arquivo model.
 
         $model = new ProdutoModel();
 

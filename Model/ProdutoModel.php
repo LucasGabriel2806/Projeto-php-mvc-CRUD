@@ -6,15 +6,13 @@ use App\DAO\ProdutoDAO;
 
 
 
-class ProdutoModel
+class ProdutoModel extends Model
 {
     public $id, $nome, $preco, $descricao;
 
-    public $rows;
 
     public function save()
     {
-        include 'DAO/ProdutoDAO.php';
 
         $dao = new ProdutoDAO();
 
@@ -42,7 +40,6 @@ class ProdutoModel
 
     public function getAllRows()
     {
-        include 'DAO/ProdutoDAO.php';
         
         
         $dao = new ProdutoDAO();
@@ -55,7 +52,6 @@ class ProdutoModel
     
     public function getById(int $id)
     {
-        include 'DAO/ProdutoDAO.php'; 
 
         $dao = new ProdutoDAO();
 
@@ -74,8 +70,6 @@ class ProdutoModel
      */
     public function delete(int $id)
     {
-        include 'DAO/ProdutoDAO.php'; // Incluíndo o arquivo DAO
-
         $dao = new ProdutoDAO();
 
         $dao->delete($id);

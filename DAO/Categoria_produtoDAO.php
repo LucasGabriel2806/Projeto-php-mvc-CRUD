@@ -5,22 +5,14 @@ namespace App\DAO;
 use App\Model\Categoria_produtoModel;
 use \PDO;
 
-class Categoria_produtoDAO
+class Categoria_produtoDAO extends DAO
 {
     
-    private $conexao;
-
-
     
     public function __construct() 
     {
-        
-        $dsn = "mysql:host=localhost:3307;dbname=db_sistema";
-        $user = "root";
-        $pass = "etecjau";
-        
-        
-        $this->conexao = new PDO($dsn, $user, $pass);
+        parent::__construct();
+    
     }
 
 
@@ -74,7 +66,6 @@ class Categoria_produtoDAO
 
     public function selectById(int $id)
     {
-        include_once 'Model/Categoria_ProdutoModel.php';
 
         $sql = "SELECT * FROM categoria_produto WHERE id = ?";
 

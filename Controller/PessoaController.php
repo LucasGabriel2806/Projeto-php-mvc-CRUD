@@ -12,19 +12,18 @@ use App\Model\PessoaModel;
  * buscar algo no banco de dados), redirecionar o usuário de rota, ou mesmo,
  * chamar outra Controller.
  */
-class PessoaController 
+class PessoaController extends Controller
 {
     /**
      * Os métodos index serão usados para devolver uma View.
      */
     public static function index() 
     {
-        include 'Model/PessoaModel.php';
 
         $model = new PessoaModel();
         $model->getAllRows();
 
-        include 'View/modules/Pessoa/ListaPessoas.php';
+        parent::render('Pessoa/ListaPessoas', $model);
     }
 
    /**
@@ -33,7 +32,6 @@ class PessoaController
     public static function form()
     {
 
-        include 'Model/PessoaModel.php'; // inclusão do arquivo model.
         $model = new PessoaModel();
 
         if(isset($_GET['id'])) // Verificando se existe uma variável $_GET
@@ -42,7 +40,7 @@ class PessoaController
 			// Typecast: eu to pegando o que ta vindo da barra do navegador: $_GET['id'] e estou convertendo pra (int) 
             // Para saber mais sobre Typecast, leia: https://tiago.blog.br/type-cast-ou-conversao-de-tipos-do-php-isso-pode-te-ajudar-muito/
 
-        include 'View/modules/Pessoa/FormPessoa.php'; // Include da View. Note que a variável $model está disponível na View.
+        parent::render('Pessoa/FormPessoa', $model);
     }
 
     /**
@@ -50,11 +48,10 @@ class PessoaController
      */
     public static function save() {
 
-        include 'Model/PessoaModel.php'; // inclusão do arquivo model.
-
         // Abaixo cada propriedade do objeto sendo abastecida com os dados informados
         // pelo usuário no formulário (note o envio via POST)
         $model = new PessoaModel();
+
         $model->id =  $_POST['id'];
         $model->nome = $_POST['nome'];
         $model->rg = $_POST['rg'];
@@ -75,7 +72,6 @@ class PessoaController
      */
     public static function delete()
     {
-        include 'Model/PessoaModel.php'; // inclusão do arquivo model.
 
         $model = new PessoaModel();
 

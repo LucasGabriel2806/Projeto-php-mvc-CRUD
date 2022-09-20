@@ -5,17 +5,14 @@ namespace App\Model;
 use App\DAO\Categoria_produtoDAO;
 
 
-class Categoria_produtoModel
+class Categoria_produtoModel extends Model
 {
     
     public $id, $nome, $descricao;
 
-    public $rows;
-
     
     public function save()
     {
-        include 'DAO/Categoria_produtoDAO.php';
 
         $dao = new Categoria_produtoDAO();
 
@@ -41,9 +38,7 @@ class Categoria_produtoModel
     }
 
     public function getAllRows()
-    {
-        include 'DAO/Categoria_ProdutoDAO.php';
-        
+    {        
         
         $dao = new Categoria_ProdutoDAO();
 
@@ -54,8 +49,7 @@ class Categoria_produtoModel
 
     
     public function getById(int $id)
-    {
-        include 'DAO/Categoria_ProdutoDAO.php'; 
+    { 
 
         $dao = new Categoria_ProdutoDAO();
 
@@ -73,7 +67,6 @@ class Categoria_produtoModel
      */
     public function delete(int $id)
     {
-        include 'DAO/Categoria_produtoDAO.php'; // Incluíndo o arquivo DAO
 
         $dao = new Categoria_produtoDAO();
 
