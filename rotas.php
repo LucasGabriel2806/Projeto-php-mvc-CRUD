@@ -4,6 +4,7 @@ use App\Controller\PessoaController;
 use App\Controller\ProdutoController;
 use App\Controller\FuncionarioController;
 use App\Controller\Categoria_produtoController;
+use App\Controller\LoginController;
 
 // Para saber mais sobre a função parse_url: https://www.php.net/manual/pt_BR/function.parse-url.php
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
@@ -11,6 +12,21 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 // Para saber mais estrutura switch, leia: https://www.php.net/manual/pt_BR/control-structures.switch.php
 switch ($url) 
 {
+    case '/login':
+        LoginController::index();
+    break;
+
+    case '/login/auth':
+        LoginController::auth();
+    break;
+
+    case '/logout':
+        LoginController::logout();
+    break;
+
+
+
+
     case '/':
         echo "página inicial";
         break;
