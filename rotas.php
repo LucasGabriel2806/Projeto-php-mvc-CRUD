@@ -107,8 +107,9 @@ switch ($url)
 
 
 
-
+    /*
     default:
         echo "Erro 404";
         break;
+    */
 }
