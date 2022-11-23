@@ -1,5 +1,6 @@
 <?php
-
+// Data Access Object - DAO
+//  - Todos os arquivos que "conversam" com SGBD (MySQL)
 namespace App\DAO;
 
 use \PDO;
@@ -29,5 +30,6 @@ abstract class DAO
         // Criando a conexão e armazenado na propriedade definida para tal.
         // Veja o que é PDO: https://www.php.net/manual/pt_BR/intro.pdo.php
          $this->conexao = new PDO($dsn, $_ENV['db']['user'], $_ENV['db']['pass']);
+
     }
 }

@@ -12,7 +12,9 @@
             <h1>login</h1>
         </header>
         <main>
-            <!--login devem ser sempre realizados em post, pra nao aparecer a senha do usuario na barra de endereço-->
+            <!--login devem ser sempre realizados em post, pra nao aparecer a senha do usuario na barra de endereço
+                INSERT INTO usuarios (nome, usuario, senha) values
+                                     ("lucas", "lucaslgpp-06", sha1("123"));-->
             <form method="post" action="autenticador.php">
                 <label>Usuário:
                     <input name="user" type="text" />

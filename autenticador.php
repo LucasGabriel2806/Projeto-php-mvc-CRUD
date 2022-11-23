@@ -6,6 +6,36 @@ session_start();
 
 try {
 
+    include 'DAO/MySQL.php';
+
+    $mysql = new MySQL();
+
+    $sql = "SELECT id, nome FROM usuarios WHERE usuario=? AND senha= sha1(?) ";
+
+    // prepare statement, prepara o codigo sql, pegando ele e substituindo os ?
+    $stmt = $mysql->prepare($sql);
+    // bindValue substitue o ? do usuario=? AND senha=?]
+    // por user e pass
+    $stmt->bindValue(1, $_POST["user"]);
+    $stmt->bindValue(2, $_POST["pass"]);
+
+    // executa a consulta
+    $stmt->execute();
+
+    // fetchObject: se a consulta retornar algo, ele pega o resultado dela e vai 
+    // organizar em um objeto generico do php e vai armazenar no dados usuario 
+    $dados_do_usuario = $stmt->fetchObject();
+
+    if($dados_do_usuario) {
+
+        $_SESSION["usuario_logado"] = $dados_do_usuario->id;
+        header("Location: index.php");
+
+    } else
+        header("Location: login.php?falhou=true");
+
+
+    /*
     $usuario_certo = "lucas";
     $senha_certa = "123";
 
@@ -24,7 +54,7 @@ try {
             /* ela amarra a maquina do usuario, cria um arquivo de cookie na maquina do usuario, 
             e cria um arquivo com a mesma id no servidor, as duas ficam vinculadas por um certo tempo, 
             ate a sessão expirar
-            */
+            * /
             header("Location: index.php");
         } else {
             // header define um cabeçalho no protocolo http
@@ -33,7 +63,7 @@ try {
     } else {
         header("Location: login.php?falhou=true");
     }
-
+    */
 
     
 
