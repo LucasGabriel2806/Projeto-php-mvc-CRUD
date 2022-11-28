@@ -15,13 +15,13 @@
             <!--login devem ser sempre realizados em post, pra nao aparecer a senha do usuario na barra de endereço
                 INSERT INTO usuarios (nome, usuario, senha) values
                                      ("lucas", "lucaslgpp-06", sha1("123"));-->
-            <form method="post" action="autenticador.php">
+            <form method="post" action="/login/auth">
                 <label>Usuário:
-                    <input name="user" type="text" />
+                    <input name="usuario" type="text" />
                 </label>
 
                 <label>Senha:
-                    <input name="pass" type="password" />
+                    <input name="senha" type="password" />
                 </label>
                 <button type="submit">Entrar</button>
             </form>

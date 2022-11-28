@@ -4,8 +4,8 @@ session_start();
 
 
 // Verificando de o usuario está logado
-if(!isset($_SESSION["usuario_logado"]))
-    header("Location: login.php");
+/*if(!isset($_SESSION["usuario_logado"]))
+    header("Location: /");
 
 
 // Para fazer o logout (sair)
@@ -13,10 +13,10 @@ if(isset($_GET["sair"])) {
     // Quando existir na barra de endereço um parametro get chamado sair entro nesse if
     // vou destruir minha var de sessão com a unset
     unset($_SESSION["usuario_logado"]);
-    header("Location: login.php");
-}
+    header("Location: /login");
+}*/
 
-try {
+/*try {
 
     include 'DAO/MySQL.php';
 
@@ -37,9 +37,9 @@ try {
     echo $e->getMessage();
 
 }
+*/
 
-
-/**
+/*
  * Melhorias
  * 1) palavra chave final no método render da Controller
  * 2) Estender PDO na classe DAO
@@ -51,8 +51,3 @@ include 'autoload.php';
 include 'rotas.php';
 
 ?>
-
-<h1>Bem vindo <strong> <?= $dados_do_usuario->nome ?>, </strong> à ÁREA RESTRITA</h1>
-
-<a href="index.php?sair=true">Sair</a>
-

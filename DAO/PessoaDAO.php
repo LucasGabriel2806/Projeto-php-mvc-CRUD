@@ -107,6 +107,8 @@ class PessoaDAO extends DAO
         return $stmt->fetchObject("App\Model\PessoaModel"); // Retornando um objeto específico PessoaModel
     }
 
+    
+
 
     public function delete(int $id)// id é inteiro.
     {

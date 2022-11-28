@@ -12,6 +12,11 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 // Para saber mais estrutura switch, leia: https://www.php.net/manual/pt_BR/control-structures.switch.php
 switch ($url) 
 {
+
+    case '/':
+        echo "página inicial";
+    break;
+
     case '/login':
         LoginController::index();
     break;
@@ -24,12 +29,23 @@ switch ($url)
         LoginController::logout();
     break;
 
+    case '/area_restrita':
+        LoginController::area_restrita();
+    break;
 
+    case '/login/form':
+        LoginController::form();
+    break;
 
+    case '/login/form/save':
+        LoginController::save();
+    break;
 
-    case '/':
-        echo "página inicial";
-        break;
+    case '/login/delete':
+        LoginController::delete();
+    break;
+
+    
 
 
     # Categoria_produto

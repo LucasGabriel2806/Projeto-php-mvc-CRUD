@@ -16,8 +16,8 @@ try {
     $stmt = $mysql->prepare($sql);
     // bindValue substitue o ? do usuario=? AND senha=?]
     // por user e pass
-    $stmt->bindValue(1, $_POST["user"]);
-    $stmt->bindValue(2, $_POST["pass"]);
+    $stmt->bindValue(1, $_POST["usuario"]);
+    $stmt->bindValue(2, $_POST["senha"]);
 
     // executa a consulta
     $stmt->execute();

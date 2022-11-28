@@ -6,124 +6,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro de Pessoa</title>
     <style>
-        body{
-            font-family: Arial, Helvetica, sans-serif;
-            background-image: linear-gradient(to right, rgb(20, 147, 220), rgb(17, 54, 71));
-        }
-        .box{
-            color: white;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
-            background-color: rgba(0, 0, 0, 0.6);
-            padding: 15px;
-            border-radius: 15px;
-            width: 20%;
-        }
-        fieldset{
-            border: 3px solid dodgerblue;
-        }
-        legend{
-            border: 1px solid dodgerblue;
-            padding: 10px;
-            text-align: center;
-            background-color: dodgerblue;
-            border-radius: 8px;
-        }
-        .inputBox{
-            position: relative;
-        }
-        .inputUser{
-            background: none;
-            border: none;
-            border-bottom: 1px solid white;
-            outline: none;
-            color: white;
-            font-size: 15px;
-            width: 100%;
-            letter-spacing: 2px;
-        }
-        .labelInput{
-            position: absolute;
-            top: 0px;
-            left: 0px;
-            pointer-events: none;
-            transition: .5s;
-        }
-        .inputUser:focus ~ .labelInput,
-        .inputUser:valid ~ .labelInput{
-            top: -20px;
-            font-size: 12px;
-            color: dodgerblue;
-        }
-        #data_nascimento{
-            border: none;
-            padding: 8px;
-            border-radius: 10px;
-            outline: none;
-            font-size: 15px;
-        }
-        #submit{
-            background-image: linear-gradient(to right,rgb(0, 92, 197), rgb(90, 20, 220));
-            width: 100%;
-            border: none;
-            padding: 15px;
-            color: white;
-            font-size: 15px;
-            cursor: pointer;
-            border-radius: 10px;
-        }
-        #submit:hover{
-            background-image: linear-gradient(to right,rgb(0, 80, 172), rgb(80, 19, 195));
-        }
+        label, input { display: block;}
     </style>
 </head>
 <body>
-<div class="box">
-        <form action="/pessoa/save" method="POST">
-            <fieldset>
-                <legend><b>Cadastro de Pessoa</b></legend>
-                <br>
-                <div class="inputBox">
-                    <input type="text" name="nome" id="nome" value="<?= $model->nome ?>" class="inputUser" required>
-                    <label for="nome" class="labelInput">Nome:</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="rg" id="rg" value="<?= $model->rg ?>" class="inputUser" required>
-                    <label for="rg" class="labelInput">Email</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="number" name="cpf" id="cpf" value="<?= $model->cpf ?>" class="inputUser" required>
-                    <label for="cpf" class="labelInput">CPF:</label>
-                </div>
-                
-                <br><br>
-                <div class="inputBox">
-                    <input type="date" name="data_nascimento" id="data_nascimento" value="<?= $model->data_nascimento ?>" class="inputUser" required>
-                    <label for="data_nascimento" class="labelInput">Data Nacimento:</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="email" name="email" id="email" value="<?= $model->email ?>" class="inputUser" required>
-                    <label for="email" class="labelInput">Email:</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="number" name="telefone" id="telefone" value="<?= $model->telefone ?>" class="inputUser" required>
-                    <label for="telefone" class="labelInput">Telefone:</label>
-                </div>
-                <br><br>
-                <div class="inputBox">
-                    <input type="text" name="endereco" id="endereco" value="<?= $model->endereco ?>" class="inputUser" required>
-                    <label for="endereco" class="labelInput">Endereço:</label>
-                </div>
-                <br><br>
-                <input type="submit" name="submit" id="submit">
-            </fieldset>
-        </form>
-    </div>
+    <fieldset>
+
+        <legend>Cadastro de Pessoa</legend>
+
+		<form method="post" action="/pessoa/save">
+
+			<input type="hidden" value="<?= $model->id ?>" name="id" />
+
+            <label for="nome">Nome:</label>
+            <input id="nome" name="nome" value="<?= $model->nome ?>" type="text" />
+
+            <label for="rg">RG:</label>
+            <input id="rg" name="rg" value="<?= $model->rg ?>" type="text" />
+
+            <label for="cpf">CPF:</label>
+            <input id="cpf" name="cpf" value="<?= $model->cpf ?>" type="number" />
+
+            <label for="data_nascimento">Data Nascimento:</label>
+            <input id="data_nascimento" name="data_nascimento" value="<?= $model->data_nascimento ?>" type="date" />
+
+            <label for="email">E-mail:</label>
+            <input id="email" name="email" value="<?= $model->email ?>" type="email" />
+
+            <label for="telefone">Telefone:</label>
+            <input id="telefone" name="telefone" value="<?= $model->telefone ?>" type="numer" />
+
+            <label for="endereco">Endereço:</label>
+            <input id="endereco" name="endereco" value="<?= $model->endereco ?>" type="text" />
+
+            <button type="submit">Salvar</button>
+		</form>
+    </fieldset>    
 </body>
 </html>
